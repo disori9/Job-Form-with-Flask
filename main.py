@@ -1,5 +1,5 @@
 from datetime import datetime
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, flash, redirect, url_for
 from flask_sqlalchemy import SQLAlchemy
 
 
@@ -21,6 +21,7 @@ class Form(db.Model):
 @app.route("/", methods=["GET", "POST"])
 def index():
     if request.method == "POST":
+        print(request.method)
         first_name = request.form["first_name"]
         last_name = request.form["last_name"]
         email_add = request.form["email"]
@@ -31,6 +32,8 @@ def index():
         form = Form(first_name=first_name, last_name=last_name, email_add=email_add, date=date_obj, occupation=occupation)
         db.session.add(form)
         db.session.commit()
+        flash(f"{first_name}, your form was submitted successfully", "success")
+        return redirect("/")
 
     return render_template("index.html")
 
