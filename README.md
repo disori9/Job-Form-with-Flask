@@ -1,0 +1,2 @@
+# A simple Job Form implemented with Flask
+## A job form wherein when the user submits a job form through the web application, it inputs their data into a SQLite DB and then sends an email to the user.
