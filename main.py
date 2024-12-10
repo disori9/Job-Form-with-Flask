@@ -30,7 +30,6 @@ class Form(db.Model):
 @app.route("/", methods=["GET", "POST"])
 def index():
     if request.method == "POST":
-        print(request.method)
         first_name = request.form["first_name"]
         last_name = request.form["last_name"]
         email_add = request.form["email"]
